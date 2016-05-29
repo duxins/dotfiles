@@ -12,7 +12,7 @@ end
 def brew_install(package, options = nil)
   return if system("brew ls --version #{package} &> /dev/null")
   puts "Installing #{package} ..." 
-  system("brew install package")
+  system("brew install #{package} #{options}")
 end
 
 # RVM
