@@ -6,37 +6,37 @@ end
 def install_homebrew
   return if command_exists?('brew')
   puts 'Installing brew ...'
-  system('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
+  system('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')  or raise 'Failed to install brew'
 end 
 
 def brew_install(package, options = nil)
   return if system("brew ls --version #{package} &> /dev/null")
   puts "Installing #{package} ..." 
-  system("brew install #{package} #{options}")
+  system("brew install #{package} #{options}") or raise "Failed to install #{package}"
 end
 
 # RVM
 def install_rvm
   return if command_exists?('rvm')
   puts 'Installing RVM ...'
-  system('\curl -sSL https://get.rvm.io | bash -s stable')
+  system('\curl -sSL https://get.rvm.io | bash -s stable') or raise "Failed to install RVM"
 end
 
 # ZSH
 def install_oh_my_zsh
   return if File.exist?(File.expand_path("~/.oh-my-zsh"))
   puts 'Installing oh-my-zsh ...' 
-  system('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
+  system('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"') or raise 'Failed to install oh-my-zsh'
 end
 
 task :setup do
   install_homebrew
+  install_rvm
+  install_oh_my_zsh
 
   brew_install('macvim', '--with-override-system-vim')
   brew_install('tmux')
 
-  install_rvm
-  install_oh_my_zsh
 end
 
 task default: [:setup]
