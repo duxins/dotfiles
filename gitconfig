@@ -1,0 +1,13 @@
+[user]
+	name = Xin Du
+	email = duxins@gmail.com
+
+[push]
+	default = current
+
+[core]
+	excludesfile = ~/.gitignore
+
+[color]
+	ui = true
+
