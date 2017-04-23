@@ -29,14 +29,28 @@ def install_oh_my_zsh
   system('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"') or raise 'Failed to install oh-my-zsh'
 end
 
+def configure_oh_my_zsh
+  ['alias.zsh'].each do |file|
+    path = __dir__ + '/zsh/' + file
+    system("ln -snf #{path}  ~/.oh-my-zsh/custom/")
+  end
+end
+
 task :setup do
   install_homebrew
   install_rvm
   install_oh_my_zsh
+  configure_oh_my_zsh
 
   brew_install('macvim', '--with-override-system-vim')
   brew_install('tmux')
 
+end
+
+
+desc "Link config files to oh-my-zsh's custom directory"
+task :configure_zsh do
+  configure_oh_my_zsh
 end
 
 task default: [:setup]
