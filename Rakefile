@@ -15,11 +15,11 @@ def brew_install(package, options = nil)
   system("brew install #{package} #{options}") or raise "Failed to install #{package}"
 end
 
-# RVM
-def install_rvm
-  return if command_exists?('rvm')
-  puts 'Installing RVM ...'
-  system('\curl -sSL https://get.rvm.io | bash -s stable') or raise "Failed to install RVM"
+# rbenv
+def install_rbenv
+  return if command_exists?('rbenv')
+  puts 'Installing rbenv ...'
+  system('brew install rbenv') or raise "Failed to install rbenv"
 end
 
 # ZSH
@@ -38,7 +38,7 @@ end
 
 task :setup do
   install_homebrew
-  install_rvm
+  install_rbenv
   install_oh_my_zsh
   configure_oh_my_zsh
 
