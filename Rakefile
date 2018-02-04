@@ -30,7 +30,7 @@ def install_oh_my_zsh
 end
 
 def configure_oh_my_zsh
-  ['alias.zsh'].each do |file|
+  ['alias.zsh', 'path.zsh'].each do |file|
     path = __dir__ + '/zsh/' + file
     system("ln -snf #{path}  ~/.oh-my-zsh/custom/")
   end
