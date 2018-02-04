@@ -42,8 +42,8 @@ task :setup do
   install_oh_my_zsh
   configure_oh_my_zsh
 
-  brew_install('macvim', '--with-override-system-vim')
-  brew_install('tmux')
+  brew_install('icu4c')
+  brew_install('telnet')
 
 end
 
