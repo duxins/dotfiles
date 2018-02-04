@@ -75,4 +75,9 @@ task :configure_zsh do
   configure_oh_my_zsh
 end
 
+desc "Link git config files (gitconfig, gitignore_global)"
+task :configure_git do
+  configure_git
+end
+
 task default: [:setup]
