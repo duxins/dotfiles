@@ -1,5 +1,15 @@
+require 'fileutils'
+
 def command_exists?(command)
   system("which #{command} &> /dev/null")
+end
+
+def create_symlink(target, link)
+  unless File.exists?(link)
+    FileUtils.ln_s(target, link, verbose: true)
+  else 
+    puts "[SKIPPING] #{link} exists"
+  end
 end
 
 # Homebrew
@@ -30,9 +40,11 @@ def install_oh_my_zsh
 end
 
 def configure_oh_my_zsh
+  puts "Linking zsh config files ..."
   ['alias.zsh', 'path.zsh'].each do |file|
-    path = __dir__ + '/zsh/' + file
-    system("ln -snf #{path}  ~/.oh-my-zsh/custom/")
+    target = __dir__ + '/zsh/' + file
+    link = File.join(File.expand_path("~/.oh-my-zsh/custom"), file)
+    create_symlink(target, link)
   end
 end
 
