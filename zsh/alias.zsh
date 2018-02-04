@@ -1,0 +1,1 @@
+alias gdvim="git difftool"
