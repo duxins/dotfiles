@@ -48,11 +48,21 @@ def configure_oh_my_zsh
   end
 end
 
+def configure_git
+  puts "Linking git config files ..."
+  ['.gitconfig', '.gitignore_global'].each do |file|
+    target = File.join(__dir__, file)
+    link = File.join(File.expand_path("~"), file)
+    create_symlink(target, link)
+  end
+end
+
 task :setup do
   install_homebrew
   install_rbenv
   install_oh_my_zsh
   configure_oh_my_zsh
+  configure_git
 
   brew_install('icu4c')
   brew_install('telnet')

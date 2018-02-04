@@ -5,9 +5,19 @@
 [push]
 	default = current
 
+[alias]
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	d = difftool
+
 [core]
 	excludesfile = ~/.gitignore_global
+	quotepath = false
 
 [color]
 	ui = true
 
+[diff]
+	tool = vimdiff
+
+[difftool]
+	prompt = false
