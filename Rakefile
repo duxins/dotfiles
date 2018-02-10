@@ -32,6 +32,13 @@ def install_rbenv
   system('brew install rbenv') or raise "Failed to install rbenv"
 end
 
+# ruby
+def install_ruby
+  ver = "2.5.0"
+  puts "Installing ruby #{ver} ..."
+  system("rbenv install #{ver} -s")
+end
+
 # ZSH
 def install_oh_my_zsh
   return if File.exist?(File.expand_path("~/.oh-my-zsh"))
@@ -66,6 +73,8 @@ task :setup do
 
   brew_install('icu4c')
   brew_install('telnet')
+
+  install_ruby
 
 end
 
