@@ -73,6 +73,7 @@ task :setup do
 
   brew_install('icu4c')
   brew_install('telnet')
+  brew_install('screen')
 
   install_ruby
 
