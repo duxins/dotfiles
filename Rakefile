@@ -34,7 +34,7 @@ end
 
 # ruby
 def install_ruby
-  ver = "2.5.0"
+  ver = "2.6.0"
   puts "Installing ruby #{ver} ..."
   system("rbenv install #{ver} -s")
 end
