@@ -75,6 +75,9 @@ task :setup do
   brew_install('telnet')
   brew_install('screen')
 
+  brew_install('python@2')
+  brew_install('tmux')
+
   install_ruby
 
 end
