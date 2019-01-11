@@ -77,6 +77,7 @@ task :setup do
 
   brew_install('python@2')
   brew_install('tmux')
+  brew_install('the_silver_searcher')
 
   install_ruby
 
